@@ -1,7 +1,7 @@
 /// <reference path="../typings/angular2-meteor.d.ts" />
 /// <reference path="../typings/testDemo.d.ts" />
 
-import {Component, View,NgFor, NgModel} from 'angular2/angular2';
+import {Component, View,NgFor,NgIf, NgModel} from 'angular2/angular2';
 import {FORM_DIRECTIVES, Control, FormBuilder, ControlGroup, Validators} from 'angular2/angular2';
 
 import {ROUTER_DIRECTIVES, Router, RouteParams} from 'angular2/router';
@@ -18,7 +18,7 @@ import {Parties} from 'collections/parties';
  */
 @View({
     templateUrl: 'client/new-party.html',
-    directives: [NgFor, NgModel, FORM_DIRECTIVES]
+    directives: [NgFor, NgModel, NgIf,FORM_DIRECTIVES]
 })
 
 
@@ -39,7 +39,7 @@ export class PartiesAdd extends MeteorComponent {
      * @param routeParams
      * @param router
      */
-    constructor(routeParams:RouteParams, public router:Router) {
+    constructor(private routeParams:RouteParams, public router:Router) {
         super();
 
         var that = this;
