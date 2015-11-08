@@ -1,0 +1,20 @@
+<div class="container">
+    <form (submit)="add($event, partyForm.value)" [ng-form-model]="partyForm" >
+
+        <div class="eight columns">
+            <label for="name">Name</label>
+            <input  class="u-full-width" type="text" id="name" [ng-form-control]="partyForm.controls['name']">
+
+            <label for="description">Description</label>
+            <input  class="u-full-width" type="text" id="description" [ng-form-control]="partyForm.controls['description']">
+
+            <label for="location">Location</label>
+            <input  class="u-full-width"  type="text" id="location" [ng-form-control]="partyForm.controls['location']">
+
+            <label for=""></label>
+            <button type="submit">Add</button>
+            <a class="button" href="/" >Cancel</a>
+        </div>
+
+    </form>
+</div>

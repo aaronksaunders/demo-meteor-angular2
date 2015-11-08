@@ -1,0 +1,17 @@
+<div class="container">
+    <div>
+        <div>
+            <h3>Is the page rendering </h3>
+        </div>
+        <table class="u-full-width">
+            <tr *ng-for="#party of parties">
+                <td>{{party.name}}</td>
+                <td>{{party.location}}</td>
+                <td><a class="button" [router-link]="['/EditParty', {partyId:party._id}]">Edit</a></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <a class="button" [router-link]="['/NewParty']">Add New Party</a>
+    </div>
+</div>
