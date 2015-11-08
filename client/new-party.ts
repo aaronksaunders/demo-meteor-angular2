@@ -1,7 +1,7 @@
 /// <reference path="../typings/angular2-meteor.d.ts" />
 /// <reference path="../typings/testDemo.d.ts" />
 
-import {Component, View,NgFor, NgModel, Inject} from 'angular2/angular2';
+import {Component, View,NgFor, NgModel} from 'angular2/angular2';
 import {FORM_DIRECTIVES, Control, FormBuilder, ControlGroup, Validators} from 'angular2/angular2';
 
 import {ROUTER_DIRECTIVES, Router, RouteParams} from 'angular2/router';
@@ -13,13 +13,20 @@ import {Parties} from 'collections/parties';
 @Component({
     selector: 'new-party'
 })
+/**
+ *
+ */
 @View({
     templateUrl: 'client/new-party.html',
     directives: [NgFor, NgModel, FORM_DIRECTIVES]
 })
+
+
+/**
+ *
+ */
 export class PartiesAdd extends MeteorComponent {
     partyForm:ControlGroup;
-    router:Router;
     party:Party;
 
     /**
@@ -32,13 +39,12 @@ export class PartiesAdd extends MeteorComponent {
      * @param routeParams
      * @param router
      */
-    constructor(routeParams:RouteParams, @Inject(Router) router:Router) {
+    constructor(routeParams:RouteParams, public router:Router) {
         super();
 
         var that = this;
 
         that.router = router;
-        that.party;
 
         // set up the form
         var fb = new FormBuilder();
@@ -70,7 +76,7 @@ export class PartiesAdd extends MeteorComponent {
      *
      * @param event
      */
-    add(event, value) {
+    add(event) {
         var that = this;
 
         event.preventDefault();
@@ -91,10 +97,6 @@ export class PartiesAdd extends MeteorComponent {
                     location: newParty.location
                 });
             }
-
-            (<Control>that.partyForm.controls['name']).updateValue('');
-            (<Control>that.partyForm.controls['description']).updateValue('');
-            (<Control>that.partyForm.controls['location']).updateValue('');
 
             that.router.navigateByUrl('/');
         }

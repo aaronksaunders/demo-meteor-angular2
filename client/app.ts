@@ -7,7 +7,7 @@ import {ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
 
 import {ROUTER_PROVIDERS, HashLocationStrategy, LocationStrategy} from 'angular2/router';
 
-import {PartiesCmp} from './party-list';
+import {PartiesList} from './party-list';
 import {PartiesAdd} from './new-party';
 
 import {Parties} from 'collections/parties';
@@ -21,11 +21,12 @@ import {bootstrap} from 'angular2-meteor';
 
 @View({
     template: '<router-outlet></router-outlet>',
-    directives: [ROUTER_DIRECTIVES, PartiesCmp]
+    directives: [ROUTER_DIRECTIVES, PartiesList]
 })
 
 @RouteConfig([
-    {path: '/', as: 'Home', component: PartiesCmp},
+    { path: "/", redirectTo: "/home" },
+    {path: '/home', as: 'Home', component: PartiesList},
     {path: '/new-party', as: 'NewParty', component: PartiesAdd},
     {path: '/edit-party/:partyId', as: 'EditParty', component: PartiesAdd}
 ])

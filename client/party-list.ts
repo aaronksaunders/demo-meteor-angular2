@@ -16,7 +16,7 @@ import {Parties} from 'collections/parties';
     templateUrl: 'client/party-list.html',
     directives: [NgFor, NgModel,ROUTER_DIRECTIVES]
 })
-export class PartiesCmp extends MeteorComponent {
+export class PartiesList extends MeteorComponent {
     parties: Mongo.Cursor<Party>;
     location: ReactiveVar<String>;
 
